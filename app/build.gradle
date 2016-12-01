@@ -17,7 +17,7 @@ android {
         }
     }
     sourceSets {
-        main.java.srcDirs += '..\\..\\..\\git\\OpenEngineLib\\src'
+        main.java.srcDirs += '..\\..\\OpenEngineLib\\src'
     }
 }
 
