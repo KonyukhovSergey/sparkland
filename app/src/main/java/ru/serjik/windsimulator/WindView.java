@@ -22,7 +22,7 @@ public class WindView extends PausableView
 	{
 		wind.tick(dt);
 
-		paint.setColor(Color.rgb(255, 0, 0));
+		paint.setColor(Color.rgb(255, 255, 255));
 		paint.setStrokeWidth(2);
 		canvas.drawPoints(wind.particles(), paint);
 	}
@@ -32,7 +32,7 @@ public class WindView extends PausableView
 	{
 		super.onSizeChanged(w, h, oldw, oldh);
 		wind = new ParticlesContainer();
-		wind.init(w, h, w > h ? w / 32 : h / 32, 1024);
+		wind.init(w, h, w > h ? w / 16 : h / 16, 1024);
 	}
 
 	public void onDestroy()

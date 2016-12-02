@@ -1,7 +1,9 @@
 package ru.serjik.windsimulator;
 
+import ru.serjik.utils.Accelerometer;
 import ru.serjik.utils.FrameRateCalculator;
 import ru.serjik.utils.FrameRateCalculator.FrameRateUpdater;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -14,13 +16,16 @@ public abstract class PausableView extends View
 	private long lastFrameTime;
 	protected Paint paint;
 	private FrameRateCalculator frc;
+	private static Accelerometer acc;
 
 	public PausableView(Context context)
 	{
 		super(context);
 
+
 		paint = new Paint();
 
+		acc = new Accelerometer(context);
 
 
 		frc = new FrameRateCalculator(new FrameRateUpdater()
@@ -55,12 +60,13 @@ public abstract class PausableView extends View
 
 	public void onPause()
 	{
-
+		acc.stop();
 	}
 
 	public void onResume()
 	{
 		lastFrameTime = System.currentTimeMillis();
+		acc.start();
 	}
 
 	public void onDestroy()
